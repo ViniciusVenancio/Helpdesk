@@ -1,5 +1,7 @@
 Aszist::Application.routes.draw do
 
+  resources :enterprises
+
   devise_for :users
 
   resources :tickets do

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :tickets
   has_many :assigned_tickets, class_name: "Ticket", foreign_key: :agent_id
   has_many :comments
+  has_one :enterprise
 
   after_initialize :set_default_role, :set_temporary_password
 

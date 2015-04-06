@@ -1,9 +1,0 @@
-test: &test
-  encoding: unicode
-  adapter: postgresql
-  database: aszist_test
-  username: postgres
-
-development:
-  << *test
-
