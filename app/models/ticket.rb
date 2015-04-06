@@ -19,7 +19,7 @@ class Ticket < ActiveRecord::Base
 
   before_validation :set_pending,
                     :set_default_priority,
-                    :create_user,
+                    :create_user
 
 
   def activity
