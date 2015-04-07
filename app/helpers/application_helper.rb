@@ -20,4 +20,7 @@ module ApplicationHelper
     date.strftime('%d/%m/%Y')
   end
 
+  def format_value_type(value)
+    value.eql?('H') ? 'Hora' : 'Minuto' 
+  end
 end

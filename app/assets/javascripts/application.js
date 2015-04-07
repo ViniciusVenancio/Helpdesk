@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require functions_helpdesk
 //
 //= require_tree .
 

@@ -5,6 +5,7 @@
     <tr>
       <th>Empresa</th>
       <th>Tipo</th>
+      <th>Descrição do tipo de contrato</th>
       <th>Data de início</th>
       <th>Data de vencimento</th>
       <th>Valor mensal</th>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= contract.enterprise.corporate_name %></td>
         <td><%= contract.contract_type.name %></td>
+        <td><%= contract.contract_type.description %></td>
         <td><%= format_date(contract.start_date) %></td>
         <td><%= format_date(contract.due_date) %></td>
         <td><%= contract.monthly_payment %></td>

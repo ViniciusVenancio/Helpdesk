@@ -55,11 +55,13 @@
   <%= @enterprise.user.email %>
 </p>
 
-<p>
+<a href="#" class="contracts-enterprise-button">Contratos | </a>
+<div class="contracts-enterprise">
   <strong>Contratos:</strong><br/>
   <ul>
     <% @enterprise.contracts.each do |contract| %>
-      <li><%= "Tipo de contrato: #{contract.type}" %></li>
+      <li><%= "Tipo de contrato: #{contract.contract_type.name}" %></li>
+      <li><%= "Cálculo do contrato: #{format_value_type(contract.contract_type.value_type)}" %></li>
       <li><%= "Data de início: #{format_date(contract.start_date)}" %></li>
       <li><%= "Data de vencimento: #{format_date(contract.due_date)}" %></li>
       <li><%= "Valor mensal: #{contract.monthly_payment}" %></li>
@@ -67,7 +69,7 @@
       <hr>
     <% end %>
   </ul>
-</p>
+</div>
 
 <%= link_to 'Editar', edit_enterprise_path(@enterprise) %> |
 <%= link_to 'Voltar', enterprises_path %>

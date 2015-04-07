@@ -13,7 +13,9 @@
             Tickets
             - if current_user.tickets_count > 0
               %span.label.round= current_user.tickets_count
-        %li= link_to "Manage users", users_path if can?(:manage, User)
+        %li= link_to "Usuários", users_path if can?(:manage, User)
+        %li= link_to "Contratos", contracts_path if can?(:manage, Contract)
+        %li= link_to "Empresas", enterprises_path if can?(:manage, Enterprise)
 
     %ul.right
       = render 'devise/menu/login_items'
