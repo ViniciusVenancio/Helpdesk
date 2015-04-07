@@ -1,4 +1,5 @@
 class Contract < ActiveRecord::Base
 	belongs_to :enterprise
-	self.inheritance_column = nil
+	belongs_to :contract_type
+	validates :contract_type_id, presence: true
 end

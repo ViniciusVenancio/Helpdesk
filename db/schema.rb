@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406211124) do
+ActiveRecord::Schema.define(version: 20150407171359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,24 @@ ActiveRecord::Schema.define(version: 20150406211124) do
   add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "contract_types", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "value"
+    t.string   "value_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contracts", force: true do |t|
     t.integer  "enterprise_id"
-    t.string   "type"
     t.date     "start_date"
     t.date     "due_date"
     t.float    "monthly_payment"
     t.integer  "sla"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contract_type_id"
   end
 
   create_table "enterprises", force: true do |t|
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(version: 20150406211124) do
     t.string   "city"
     t.string   "cep"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "category"
+    t.integer  "contract_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

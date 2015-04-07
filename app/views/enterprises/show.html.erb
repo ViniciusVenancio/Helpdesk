@@ -1,59 +1,73 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @enterprise.name %>
 </p>
 
 <p>
-  <strong>Corporate name:</strong>
+  <strong>Nome Fantasia:</strong>
   <%= @enterprise.corporate_name %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>Telefone:</strong>
   <%= @enterprise.phone %>
 </p>
 
 <p>
-  <strong>Cnpj:</strong>
+  <strong>CNPJ:</strong>
   <%= @enterprise.cnpj %>
 </p>
 
 <p>
-  <strong>State registration:</strong>
+  <strong>Inscrição Estadual:</strong>
   <%= @enterprise.state_registration %>
 </p>
 
 <p>
-  <strong>Adress:</strong>
+  <strong>Endereço:</strong>
   <%= @enterprise.adress %>
 </p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Número:</strong>
   <%= @enterprise.number %>
 </p>
 
 <p>
-  <strong>District:</strong>
+  <strong>Bairro:</strong>
   <%= @enterprise.district %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Cidade:</strong>
   <%= @enterprise.city %>
 </p>
 
 <p>
-  <strong>Cep:</strong>
+  <strong>CEP:</strong>
   <%= @enterprise.cep %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Usuário:</strong>
   <%= @enterprise.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_enterprise_path(@enterprise) %> |
-<%= link_to 'Back', enterprises_path %>
+<p>
+  <strong>Contratos:</strong><br/>
+  <ul>
+    <% @enterprise.contracts.each do |contract| %>
+      <li><%= "Tipo de contrato: #{contract.type}" %></li>
+      <li><%= "Data de início: #{format_date(contract.start_date)}" %></li>
+      <li><%= "Data de vencimento: #{format_date(contract.due_date)}" %></li>
+      <li><%= "Valor mensal: #{contract.monthly_payment}" %></li>
+      <li><%= "SLA: #{contract.sla}" %></li>
+      <hr>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Editar', edit_enterprise_path(@enterprise) %> |
+<%= link_to 'Voltar', enterprises_path %>

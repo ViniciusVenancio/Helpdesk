@@ -1,5 +1,9 @@
 Aszist::Application.routes.draw do
 
+  resources :services
+
+  resources :contract_types
+
   resources :contracts
 
   resources :enterprises

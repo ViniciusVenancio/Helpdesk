@@ -19,9 +19,9 @@
     <% @contracts.each do |contract| %>
       <tr>
         <td><%= contract.enterprise.corporate_name %></td>
-        <td><%= contract.type %></td>
-        <td><%= contract.start_date.strftime('%d-%m-%Y') %></td>
-        <td><%= contract.due_date.strftime('%d-%m-%Y') %></td>
+        <td><%= contract.contract_type.name %></td>
+        <td><%= format_date(contract.start_date) %></td>
+        <td><%= format_date(contract.due_date) %></td>
         <td><%= contract.monthly_payment %></td>
         <td><%= contract.sla %></td>
         <td><%= link_to 'Visualizar', contract %></td>
@@ -31,7 +31,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'Novo Contrato', new_contract_path %>

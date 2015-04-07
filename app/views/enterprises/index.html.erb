@@ -1,19 +1,18 @@
-<% if can? :read, @enterprises %>
   <h1>Listing enterprises</h1>
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Corporate name</th>
-        <th>Phone</th>
-        <th>Cnpj</th>
-        <th>State registration</th>
-        <th>Adress</th>
-        <th>Number</th>
-        <th>District</th>
-        <th>City</th>
-        <th>Cep</th>
-        <th>User</th>
+        <th>Nome</th>
+        <th>Nome Fantasia</th>
+        <th>Telefone</th>
+        <th>CNPJ</th>
+        <th>Inscrição Estadual</th>
+        <th>Endereço</th>
+        <th>Número</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>CEP</th>
+        <th>Usuário</th>
         <th></th>
         <th></th>
         <th></th>
@@ -33,15 +32,12 @@
           <td><%= enterprise.city %></td>
           <td><%= enterprise.cep %></td>
           <td><%= enterprise.user.email %></td>
-          <td><%= link_to 'Exbir', enterprise %></td>
-          <td><%= link_to 'Edita', edit_enterprise_path(enterprise) %></td>
-          <td><%= link_to 'Excluir', enterprise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Visualizar', enterprise %></td>
+          <td><%= link_to 'Editar', edit_enterprise_path(enterprise) %></td>
+          <td><%= link_to 'Excluir', enterprise, method: :delete, data: { confirm: 'Tem certeza que deseja realizar a exclusão?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <br>
   <%= link_to 'Nova Empresa', new_enterprise_path %>
-<% else %>
-  <h1>Sem permissão!</h1>
-<% end %>

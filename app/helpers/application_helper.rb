@@ -16,4 +16,8 @@ module ApplicationHelper
     raw Render::SmartyPants.render(markdown.render(text))
   end
 
+  def format_date(date)
+    date.strftime('%d/%m/%Y')
+  end
+
 end

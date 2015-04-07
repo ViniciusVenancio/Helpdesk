@@ -1,0 +1,15 @@
+<%= simple_form_for(@service) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :category %>
+    <%= f.label :contract_type_id %>
+    <%= f.collection_select :contract_type_id, @types, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
