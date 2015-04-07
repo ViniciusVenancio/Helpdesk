@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @contract.enterprise.corporate_name %>
+</p>
+
+<p>
+  <strong>Tipe:</strong>
+  <%= @contract.type %>
+</p>
+
+<p>
+  <strong>Data de início:</strong>
+  <%= @contract.start_date %>
+</p>
+
+<p>
+  <strong>Data de vencimento:</strong>
+  <%= @contract.due_date %>
+</p>
+
+<p>
+  <strong>Valor mensal:</strong>
+  <%= @contract.monthly_payment %>
+</p>
+
+<p>
+  <strong>SLA:</strong>
+  <%= @contract.sla %>
+</p>
+
+<%= link_to 'Editar', edit_contract_path(@contract) %> |
+<%= link_to 'Voltar', contracts_path %>

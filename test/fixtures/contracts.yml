@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enterprise_id: 1
+  type: 
+  start_date: 2015-04-06
+  due_date: 2015-04-06
+  monthly_payment: 1.5
+  sla: 1
+
+two:
+  enterprise_id: 1
+  type: 
+  start_date: 2015-04-06
+  due_date: 2015-04-06
+  monthly_payment: 1.5
+  sla: 1

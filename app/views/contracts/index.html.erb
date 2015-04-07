@@ -1,0 +1,37 @@
+<h1>Contratos cadastrados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Tipo</th>
+      <th>Data de início</th>
+      <th>Data de vencimento</th>
+      <th>Valor mensal</th>
+      <th>SLA</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.enterprise.corporate_name %></td>
+        <td><%= contract.type %></td>
+        <td><%= contract.start_date.strftime('%d-%m-%Y') %></td>
+        <td><%= contract.due_date.strftime('%d-%m-%Y') %></td>
+        <td><%= contract.monthly_payment %></td>
+        <td><%= contract.sla %></td>
+        <td><%= link_to 'Visualizar', contract %></td>
+        <td><%= link_to 'Editar', edit_contract_path(contract) %></td>
+        <td><%= link_to 'Excluir', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Contrato', new_contract_path %>
