@@ -1,11 +1,9 @@
 class ContractsController < ApplicationController
-  include Auth
-
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
   before_action :set_enterprises, only: [:edit, :new]
   before_action :set_contract_types, only: [:edit, :new]
   before_action :authenticate_user!
-  before_action :Auth.auth_admin!
+  before_action :require_admin!
 
   respond_to :html
 
@@ -57,5 +55,9 @@ class ContractsController < ApplicationController
 
     def set_contract_types
       @types = ContractType.all
+    end
+
+    def require_admin!
+      redirect_to root_path unless can? :manage, @contracts
     end
 end

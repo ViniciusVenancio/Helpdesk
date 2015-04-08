@@ -24,15 +24,15 @@ module ApplicationHelper
   # Verifico se o nome e o sobrenome estão vazios. Se sim, exibo o email do usuário
   # caso contrario o nome e sobrenome
   def user_to_show(user)
-    user.first_name.empty? && user.last_name.empty? ? "#{user.email}" : "#{user.first_name} #{user.last_name}"
+    user.first_name.nil? && user.last_name.nil? ? "#{user.email}" : "#{user.first_name} #{user.last_name}"
   end
 
   def format_package(package)
     case package
-    when 'H' then 'Hora'  
-    when 'D' then 'Dia' 
-    when 'M' then 'Mês'
-    when 'Y' then 'Ano'
+      when 'H' then 'Hora'  
+      when 'D' then 'Dia' 
+      when 'M' then 'Mês'
+      when 'Y' then 'Ano'
     end
   end
 end

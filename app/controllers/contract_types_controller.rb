@@ -1,6 +1,7 @@
 class ContractTypesController < ApplicationController
   before_action :set_contract_type, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_admin!
   
   respond_to :html
 
@@ -44,5 +45,9 @@ class ContractTypesController < ApplicationController
 
     def contract_type_params
       params.require(:contract_type).permit(:name, :description, :value, :value_type)
+    end
+
+    def require_admin!
+      redirect_to root_path unless can? :manage, @contract_types  
     end
 end

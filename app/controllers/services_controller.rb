@@ -2,6 +2,7 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
   before_action :authenticate_user!
+  before_action :require_admin!
 
   respond_to :html
 
@@ -49,5 +50,9 @@ class ServicesController < ApplicationController
 
     def set_types
       @types = ContractType.all
+    end
+
+    def require_admin!
+      redirect_to root_path unless can? :manage, @services
     end
 end

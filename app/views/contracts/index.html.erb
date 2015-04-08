@@ -26,9 +26,9 @@
         <td><%= format_date(contract.due_date) %></td>
         <td><%= contract.monthly_payment %></td>
         <td><%= contract.sla %></td>
-        <td><%= link_to 'Visualizar', contract %></td>
-        <td><%= link_to 'Editar', edit_contract_path(contract) %></td>
-        <td><%= link_to 'Excluir', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag('visualizar.png'), contract %></td>
+        <td><%= link_to image_tag('editar.png'), edit_contract_path(contract) %></td>
+        <td><%= link_to image_tag('deletar.png'), contract, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
