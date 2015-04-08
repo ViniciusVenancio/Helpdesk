@@ -26,4 +26,13 @@ module ApplicationHelper
   def user_to_show(user)
     user.first_name.empty? && user.last_name.empty? ? "#{user.email}" : "#{user.first_name} #{user.last_name}"
   end
+
+  def format_package(package)
+    case package
+    when 'H' then 'Hora'  
+    when 'D' then 'Dia' 
+    when 'M' then 'Mês'
+    when 'Y' then 'Ano'
+    end
+  end
 end

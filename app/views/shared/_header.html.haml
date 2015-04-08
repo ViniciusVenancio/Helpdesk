@@ -17,7 +17,7 @@
         %li= link_to "Contratos", contracts_path if can?(:manage, Contract)
         %li= link_to "Pacotes", contract_types_path if can?(:manage, ContractType)
         %li= link_to "Serviços", services_path if can?(:manage, Service)
-        %li= link_to "Empresas", enterprises_path if can?(:manage, Enterprise)
+        %li= link_to "Empresas", enterprises_path if can?(:read, Enterprise)
         
 
     %ul.right

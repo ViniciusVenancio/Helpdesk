@@ -1,4 +1,4 @@
-  <h1>Listing enterprises</h1>
+  <h1>Empresas cadastradas</h1>
   <table>
     <thead>
       <tr>
@@ -14,8 +14,10 @@
         <th>CEP</th>
         <th>Usuário</th>
         <th></th>
-        <th></th>
-        <th></th>
+        <% if can? :edit, @enterprises %>
+          <th></th>
+          <th></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -32,12 +34,16 @@
           <td><%= enterprise.city %></td>
           <td><%= enterprise.cep %></td>
           <td><%= enterprise.user.email %></td>
-          <td><%= link_to 'Visualizar', enterprise %></td>
-          <td><%= link_to 'Editar', edit_enterprise_path(enterprise) %></td>
-          <td><%= link_to 'Excluir', enterprise, method: :delete, data: { confirm: 'Tem certeza que deseja realizar a exclusão?' } %></td>
+          <td><%= link_to image_tag("visualizar.png"), enterprise %></td>
+          <% if can? :edit, @enterprises %>
+            <td><%= link_to image_tag("editar.png"), edit_enterprise_path(enterprise) %></td>
+            <td><%= link_to image_tag("deletar.png"), enterprise, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
   <br>
-  <%= link_to 'Nova Empresa', new_enterprise_path %>
+ <% if can? :create, @enterprises %>
+   <%= link_to 'Nova Empresa', new_enterprise_path %>
+ <% end %>

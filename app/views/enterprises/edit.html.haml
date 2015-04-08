@@ -1,8 +1,6 @@
-- if cannot? :edit, @enterprise
-	%h1 Você não tem permissão para tal ação!
-- else
-	%h1 Editing enterprise
-	= render 'form'
-	= link_to 'Exibir', @enterprise
+%h1 Editando empresa
+	
+= render 'form'
+= link_to 'Exibir', @enterprise
 
 = link_to 'Voltar', enterprises_path

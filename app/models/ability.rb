@@ -11,6 +11,7 @@ class Ability
     elsif user.role? :agent
       can [:edit, :update, :read], Ticket, :group => { :id => Ticket.where(:agent_id => user.id).collect{ |t| t.id } }
       can :update_status, Ticket
+      can :read, Enterprise
     else
       can :manage, Ticket do |ticket|
         ticket.agent_id == user.id or user.role? :admin

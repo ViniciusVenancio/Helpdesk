@@ -61,7 +61,7 @@
   <ul>
     <% @enterprise.contracts.each do |contract| %>
       <li><%= "Tipo de contrato: #{contract.contract_type.name}" %></li>
-      <li><%= "Cálculo do contrato: #{format_value_type(contract.contract_type.value_type)}" %></li>
+      <li><%= "Cálculo do contrato: #{format_package(contract.contract_type.value_type)}" %></li>
       <li><%= "Data de início: #{format_date(contract.start_date)}" %></li>
       <li><%= "Data de vencimento: #{format_date(contract.due_date)}" %></li>
       <li><%= "Valor mensal: #{contract.monthly_payment}" %></li>
