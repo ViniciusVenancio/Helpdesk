@@ -19,10 +19,10 @@
         <td><%= contract_type.name %></td>
         <td><%= contract_type.description %></td>
         <td><%= contract_type.value %></td>
-        <td><%= contract_type.value_type %></td>
-        <td><%= link_to 'Visualizar', contract_type %></td>
+        <td><%= format_package(contract_type.value_type) %></td>
+        <td><%= link_to image_tag("visualizar.png"), contract_type %></td>
         <td><%= link_to image_tag("editar.png"), edit_contract_type_path(contract_type) %></td>
-        <td><%= link_to image_tag("deletar.png"), contract_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag("deletar.png"), contract_type, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>

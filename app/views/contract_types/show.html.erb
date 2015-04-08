@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @contract_type.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @contract_type.description %>
 </p>
 
 <p>
-  <strong>Value:</strong>
+  <strong>Valor:</strong>
   <%= @contract_type.value %>
 </p>
 
 <p>
-  <strong>Value type:</strong>
-  <%= @contract_type.value_type %>
+  <strong>Tipo de valor:</strong>
+  <%= format_package(@contract_type.value_type) %>
 </p>
 
-<%= link_to 'Edit', edit_contract_type_path(@contract_type) %> |
-<%= link_to 'Back', contract_types_path %>
+<%= link_to 'Editar', edit_contract_type_path(@contract_type) %> |
+<%= link_to 'Voltar', contract_types_path %>

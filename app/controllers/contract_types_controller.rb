@@ -1,6 +1,7 @@
 class ContractTypesController < ApplicationController
   before_action :set_contract_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   respond_to :html
 
   def index

@@ -2,6 +2,8 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
   before_action :set_enterprises, only: [:edit, :new]
   before_action :set_contract_types, only: [:edit, :new]
+  before_action :authenticate_user!
+  before_action :validate_user
 
   respond_to :html
 
@@ -53,5 +55,9 @@ class ContractsController < ApplicationController
 
     def set_contract_types
       @types = ContractType.all
+    end
+
+    def validate_user
+      redirect_to tickets_path unless current_user.role? :admin 
     end
 end
