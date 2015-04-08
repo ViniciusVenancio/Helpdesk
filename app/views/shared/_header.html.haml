@@ -15,6 +15,7 @@
               %span.label.round= current_user.tickets_count
         %li= link_to "Usuários", users_path if can?(:manage, User)
         %li= link_to "Contratos", contracts_path if can?(:manage, Contract)
+        %li= link_to "Pacotes", contract_types_path if can?(:manage, ContractType)
         %li= link_to "Serviços", services_path if can?(:manage, Service)
         %li= link_to "Empresas", enterprises_path if can?(:manage, Enterprise)
         

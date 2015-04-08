@@ -16,10 +16,13 @@ module ApplicationHelper
     raw Render::SmartyPants.render(markdown.render(text))
   end
 
+  # formatando data para o padrão Brasileiro
   def format_date(date)
     date.strftime('%d/%m/%Y')
   end
 
+  # Verifico se o nome e o sobrenome estão vazios. Se sim, exibo o email do usuário
+  # caso contrario o nome e sobrenome
   def user_to_show(user)
     user.first_name.empty? && user.last_name.empty? ? "#{user.email}" : "#{user.first_name} #{user.last_name}"
   end

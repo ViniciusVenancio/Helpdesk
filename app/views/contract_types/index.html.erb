@@ -1,12 +1,12 @@
-<h1>Listing contract_types</h1>
+<h1>Lista de Pacotes</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Value</th>
-      <th>Value type</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Tipo do valor</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,9 +20,9 @@
         <td><%= contract_type.description %></td>
         <td><%= contract_type.value %></td>
         <td><%= contract_type.value_type %></td>
-        <td><%= link_to 'Show', contract_type %></td>
-        <td><%= link_to 'Edit', edit_contract_type_path(contract_type) %></td>
-        <td><%= link_to 'Destroy', contract_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', contract_type %></td>
+        <td><%= link_to image_tag("editar.png"), edit_contract_type_path(contract_type) %></td>
+        <td><%= link_to image_tag("deletar.png"), contract_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Contract type', new_contract_type_path %>
+<%= link_to 'Novo Pacote', new_contract_type_path %>
