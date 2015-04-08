@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
-  # check_authorization
+  before_action :set_enterprises
+  after_action :set_enterprise, only: [:create, :update, :edit]
 
   # GET /tickets
   # GET /tickets.json
@@ -91,6 +92,18 @@ class TicketsController < ApplicationController
   protected
 
   def ticket_params
-    params.require(:ticket).permit(:user_id, :agent_id, :priority, :status, :subject, :body)
+    params.require(:ticket).permit(:user_id, :agent_id, :priority, :status, :subject, :body, :enterprise_id)
   end
+
+  def set_enterprises
+    @enterprises = Enterprise.all
+  end
+
+  def set_enterprise
+    if params[:enterprise_id].nil?
+      @ticket.enterprise.id = current_user.enterprise.id
+      @ticket.save
+    end
+  end
+
 end
