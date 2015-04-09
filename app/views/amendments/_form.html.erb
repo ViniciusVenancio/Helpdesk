@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :contract_id %>
     <%= f.input :start_date %>
+    <%= f.hidden_field :contract_id, :value => params[:contract_id] %>
     <%= f.input :end_date %>
     <%= f.input :value %>
     <%= f.input :number %>

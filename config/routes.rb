@@ -1,5 +1,7 @@
 Aszist::Application.routes.draw do
 
+  get "amendments/new/:contract_id", to: "amendments#new", as: :new_amendment 
+  
   resources :amendments
 
   resources :services
