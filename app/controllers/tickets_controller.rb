@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_enterprises
-  after_action :set_enterprise, only: [:create, :update, :edit]
+  after_action :set_enterprise, only: [:create]
 
   # GET /tickets
   # GET /tickets.json
@@ -47,7 +47,14 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
 
-    @ticket.user = current_user if @ticket.user.nil?
+    parametro = params[:ticket][:enterprise_id]
+
+    if parametro
+      @ticket.user = Enterprise.find(parametro).user if @ticket.user.nil?
+    else
+      @ticket.user = current_user
+    end
+
     @ticket.agent = User.default_agent if @ticket.agent.nil?
 
     respond_to do |format|
@@ -99,10 +106,12 @@ class TicketsController < ApplicationController
     @enterprises = Enterprise.all
   end
 
+  #seto a empresa do usuário(customer) para o Ticket criado
   def set_enterprise
-    if params[:enterprise_id].nil?
-      @ticket.enterprise.id = current_user.enterprise.id
-      @ticket.save
+    unless params[:ticket][:enterprise_id]
+      if current_user.role? :customer
+        @ticket.update_attribute(:enterprise_id, current_user.enterprise.id)
+      end
     end
   end
 

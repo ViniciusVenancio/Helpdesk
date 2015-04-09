@@ -9,6 +9,11 @@
     %th{ scope: "row"} From:
     %td= @ticket.user
   %tr
+  %tr
+    - unless current_user.role? :customer
+      %th{ scope: "row"} Enterprise:
+      %td= @ticket.enterprise.corporate_name
+  %tr
     %th{ scope: "row" } Assigned to:
     %td
       = @ticket.agent

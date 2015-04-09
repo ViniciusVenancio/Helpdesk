@@ -2,7 +2,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
   belongs_to :agent, :class_name => "User"
   has_many :comments
-  belongs_to :enteprise
+  belongs_to :enterprise
 
   accepts_nested_attributes_for :comments
 
