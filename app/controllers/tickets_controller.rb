@@ -49,10 +49,12 @@ class TicketsController < ApplicationController
 
     parametro = params[:ticket][:enterprise_id]
 
+
+    #qualquer problema, alterar o ||= para if @ticket.user.nil?
     if parametro
-      @ticket.user = Enterprise.find(parametro).user if @ticket.user.nil?
+      @ticket.user ||= Enterprise.find(parametro).user
     else
-      @ticket.user = current_user
+      @ticket.user ||= current_user
     end
 
     @ticket.agent = User.default_agent if @ticket.agent.nil?

@@ -2,6 +2,7 @@ class Contract < ActiveRecord::Base
 	# Associações
 	belongs_to :enterprise
 	belongs_to :contract_type
+	has_many :amendments
 
 	# Validações
 	validates :contract_type_id, presence: true

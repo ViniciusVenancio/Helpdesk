@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contract:</strong>
+  <%= @amendment.contract_id %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @amendment.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @amendment.end_date %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @amendment.value %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @amendment.number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @amendment.title %>
+</p>
+
+<%= link_to 'Edit', edit_amendment_path(@amendment) %> |
+<%= link_to 'Back', amendments_path %>

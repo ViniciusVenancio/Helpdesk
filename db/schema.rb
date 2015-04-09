@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408170728) do
+ActiveRecord::Schema.define(version: 20150409150812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amendments", force: true do |t|
+    t.integer  "contract_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.float    "value"
+    t.integer  "number"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "ticket_id"
@@ -46,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150408170728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "contract_type_id"
+    t.float    "current_value"
   end
 
   create_table "enterprises", force: true do |t|

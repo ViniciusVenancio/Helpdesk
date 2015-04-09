@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contract_id: 1
+  start_date: 2015-04-09
+  end_date: 2015-04-09
+  value: 1.5
+  number: 1
+  title: MyString
+
+two:
+  contract_id: 1
+  start_date: 2015-04-09
+  end_date: 2015-04-09
+  value: 1.5
+  number: 1
+  title: MyString

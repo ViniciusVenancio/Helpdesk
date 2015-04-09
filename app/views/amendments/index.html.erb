@@ -1,0 +1,37 @@
+<h1>Listing amendments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contract</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Value</th>
+      <th>Number</th>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amendments.each do |amendment| %>
+      <tr>
+        <td><%= amendment.contract_id %></td>
+        <td><%= amendment.start_date %></td>
+        <td><%= amendment.end_date %></td>
+        <td><%= amendment.value %></td>
+        <td><%= amendment.number %></td>
+        <td><%= amendment.title %></td>
+        <td><%= link_to 'Show', amendment %></td>
+        <td><%= link_to 'Edit', edit_amendment_path(amendment) %></td>
+        <td><%= link_to 'Destroy', amendment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Amendment', new_amendment_path %>
