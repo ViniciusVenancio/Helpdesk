@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show, :edit, :update, :destroy]
+  before_action :set_contract, only: [:show, :edit, :update]
   before_action :set_enterprises, only: [:edit, :new]
   before_action :set_contract_types, only: [:edit, :new]
   before_action :authenticate_user!
@@ -26,17 +26,13 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
+    @contract.current_value = @contract.monthly_payment
     @contract.save
     respond_with(@contract)
   end
 
   def update
     @contract.update(contract_params)
-    respond_with(@contract)
-  end
-
-  def destroy
-    @contract.destroy
     respond_with(@contract)
   end
 

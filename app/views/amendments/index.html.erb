@@ -25,13 +25,9 @@
         <td><%= amendment.number %></td>
         <td><%= amendment.title %></td>
         <td><%= link_to 'Show', amendment %></td>
-        <td><%= link_to 'Edit', edit_amendment_path(amendment) %></td>
+        <td><%= link_to 'Edit', other_edit_amendment_path(amendment, amendment.contract) %></td>
         <td><%= link_to 'Destroy', amendment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Amendment', new_amendment_path %>

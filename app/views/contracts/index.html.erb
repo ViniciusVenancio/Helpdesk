@@ -9,8 +9,8 @@
       <th>Data de início</th>
       <th>Data de vencimento</th>
       <th>Valor mensal</th>
+      <th>Valor atual</th>
       <th>SLA</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,10 +26,14 @@
         <td><%= format_date(contract.start_date) %></td>
         <td><%= format_date(contract.due_date) %></td>
         <td><%= contract.monthly_payment %></td>
+        <td><%= contract.current_value %></td>
         <td><%= contract.sla %></td>
         <td><%= link_to image_tag('visualizar.png'), contract %></td>
-        <td><%= link_to image_tag('editar.png'), edit_contract_path(contract) %></td>
-        <td><%= link_to image_tag('deletar.png'), contract, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        <% if contract.amendments.empty? %>
+          <td><%= link_to image_tag('editar.png'), edit_contract_path(contract) %></td>
+        <% else %>
+          <td></td>
+        <% end %>  
         <td><%= link_to 'Aditar', new_amendment_path(contract)  %></td>
       </tr>
     <% end %>

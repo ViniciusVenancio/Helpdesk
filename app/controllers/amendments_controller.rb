@@ -1,7 +1,8 @@
 class AmendmentsController < ApplicationController
   before_action :set_amendment, only: [:show, :edit, :update, :destroy]
   before_action :set_contracts, only: [:edit, :update, :create, :new]
-  after_action :update_contract_value!, only: [:update, :create]
+  after_action :update_contract_value, only: [:create]
+  after_action :update_contract_value_after_update, only: [:update]
 
   respond_to :html
 
@@ -51,23 +52,27 @@ class AmendmentsController < ApplicationController
       @contracts = Contract.all
     end
     
-    #atualiza valor atual da tabela do contrato!
-    def update_contract_value!
-      
-      #procuro o contrato a ser atualizado
-      contract = Contract.find(params[:contract_id])
-
+    def update_contract_current_value(contract)
       #atribuo o valor dele ao contador
       sum = contract.monthly_payment
 
       #procuro todos os aditamentos desse contrato e retorno um array
-      amendments = Amendment.where('contract_id = #{params[:contract_id]}')
+      amendments = Amendment.where('contract_id = ?', contract.id)
 
       #faço o cálculo dos aditamentos
-      value_to_update = amendments.each { |amendment| sum += amendment.value }
+      amendments.each { |amendment| sum += amendment.value }
 
       #atualizo o valor atual do contrato
-      contract.update_attribute(contract.current_value, value_to_update)
-    
+      contract.update_attribute('current_value', sum)
     end
+
+    #atualiza valor atual da tabela do contrato na criação do aditamento
+    def update_contract_value
+      update_contract_current_value(Contract.find(params[:amendment][:contract_id]))
+    end
+
+    def update_contract_value_after_update
+       update_contract_current_value(Contract.find(params[:amendment][:contract_id]))     
+    end
+
 end
