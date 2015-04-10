@@ -26,7 +26,6 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
-    @contract.current_value = @contract.monthly_payment
     @contract.save
     respond_with(@contract)
   end
@@ -42,7 +41,7 @@ class ContractsController < ApplicationController
     end
 
     def contract_params
-      params.require(:contract).permit(:enterprise_id, :start_date, :due_date, :monthly_payment, :sla, :contract_type_id)
+      params.require(:contract).permit(:enterprise_id, :start_date, :due_date, :monthly_payment, :sla, :contract_type_id, :current_value)
     end
 
     def set_enterprises

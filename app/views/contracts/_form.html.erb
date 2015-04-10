@@ -9,6 +9,7 @@
     <%= f.input :start_date %>
     <%= f.input :due_date %>
     <%= f.input :monthly_payment %>
+    <%= f.hidden_field :current_value, :value => @contract.monthly_payment %>
     <%= f.input :sla %>
   </div>
 
