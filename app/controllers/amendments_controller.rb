@@ -25,6 +25,8 @@ class AmendmentsController < ApplicationController
 
   def create
     @amendment = Amendment.new(amendment_params)
+    a = Amendment.where("contract_id = #{params[:amendment][:contract_id]}").last
+    a.nil? ? @amendment.number = 1 : @amendment.number = a.number + 1
     @amendment.save
     respond_with(@amendment)
   end

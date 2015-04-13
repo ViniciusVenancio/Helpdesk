@@ -26,12 +26,13 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
-    @contract.save
+    set_current_value
     respond_with(@contract)
   end
 
   def update
     @contract.update(contract_params)
+    set_current_value
     respond_with(@contract)
   end
 
@@ -54,5 +55,10 @@ class ContractsController < ApplicationController
 
     def require_admin!
       redirect_to root_path unless can? :manage, @contracts
+    end
+
+    def set_current_value
+      @contract.current_value.nil? ? @contract.current_value = params[:contract][:monthly_payment] : @contract.current_value = @contract.monthly_payment
+      @contract.save
     end
 end

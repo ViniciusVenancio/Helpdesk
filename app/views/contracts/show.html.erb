@@ -30,5 +30,18 @@
   <%= @contract.sla %>
 </p>
 
+<% unless @contract.amendments.empty? %>
+  <h2>Aditamentos</h2><hr>
+  <ul>
+    <% @contract.amendments.each do |amendment| %>
+      <li><%= "Número do aditamento: #{amendment.number}" %></li>
+      <li><%= "Data de início: #{format_date(amendment.start_date)}" %></li>
+      <li><%= "Data de vencimento: #{format_date(amendment.end_date)}" %></li>
+      <li><%= "Valor: #{amendment.value}" %></li>
+      <hr>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Editar', edit_contract_path(@contract) %> |
 <%= link_to 'Voltar', contracts_path %>
