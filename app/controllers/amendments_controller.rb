@@ -1,8 +1,7 @@
 class AmendmentsController < ApplicationController
   before_action :set_amendment, only: [:show, :edit, :update, :destroy]
   before_action :set_contracts, only: [:edit, :update, :create, :new]
-  after_action :update_contract_value, only: [:create]
-  after_action :update_contract_value_after_update, only: [:update]
+  after_action :update_contract_current_value, only: [:create, :update]
 
   respond_to :html
 
@@ -53,7 +52,10 @@ class AmendmentsController < ApplicationController
       @contracts = Contract.all
     end
 
-    def update_contract_current_value(contract)
+    def update_contract_current_value
+      #procuro o contrato daquele aditamento
+      contract = Contract.find(params[:amendment][:contract_id])
+      
       #atribuo o valor dele ao contador
       sum = contract.monthly_payment
 
@@ -65,15 +67,6 @@ class AmendmentsController < ApplicationController
 
       #atualizo o valor atual do contrato
       contract.update_attribute('current_value', sum)
-    end
-
-    #atualiza valor atual da tabela do contrato na criação do aditamento
-    def update_contract_value
-      update_contract_current_value(Contract.find(params[:amendment][:contract_id]))
-    end
-
-    def update_contract_value_after_update
-       update_contract_current_value(Contract.find(params[:amendment][:contract_id]))     
     end
 
 end

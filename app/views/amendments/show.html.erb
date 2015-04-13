@@ -30,5 +30,5 @@
   <%= @amendment.title %>
 </p>
 
-<%= link_to 'Edit', edit_amendment_path(@amendment) %> |
+<%= link_to 'Edit', other_edit_amendment_path(@amendment, @amendment.contract) %> |
 <%= link_to 'Back', amendments_path %>

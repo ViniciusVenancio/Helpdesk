@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Empresa</th>
+      <th>Situação</th>
       <th>Tipo</th>
       <th>Descrição do tipo de contrato</th>
       <th>Data de início</th>
@@ -21,6 +22,7 @@
     <% @contracts.each do |contract| %>
       <tr>
         <td><%= contract.enterprise.corporate_name %></td>
+        <td><%= contract.status %></td>
         <td><%= contract.contract_type.name %></td>
         <td><%= contract.contract_type.description %></td>
         <td><%= format_date(contract.start_date) %></td>
