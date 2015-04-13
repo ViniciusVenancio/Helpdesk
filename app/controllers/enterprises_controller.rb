@@ -1,6 +1,7 @@
 class EnterprisesController < ApplicationController
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :filter_user, only: [:new, :edit]
 
   respond_to :html
 
@@ -35,6 +36,11 @@ class EnterprisesController < ApplicationController
   def destroy
     @enterprise.destroy
     respond_with(@enterprise)
+  end
+
+  def filter_user
+    @users = User.where("role = 'customer'")
+    @users.each {|user| user.enterprise.nil? }
   end
 
   private

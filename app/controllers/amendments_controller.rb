@@ -68,5 +68,4 @@ class AmendmentsController < ApplicationController
       #atualizo o valor atual do contrato
       contract.update_attribute('current_value', sum)
     end
-
 end

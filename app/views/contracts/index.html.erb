@@ -31,12 +31,17 @@
         <td><%= contract.current_value %></td>
         <td><%= contract.sla %></td>
         <td><%= link_to image_tag('visualizar.png'), contract %></td>
-        <% if contract.amendments.empty? %>
-          <td><%= link_to image_tag('editar.png'), edit_contract_path(contract) %></td>
+        <% unless contract.status.eql? 'Encerrado' %>
+          <% if contract.amendments.empty? %>
+            <td><%= link_to image_tag('editar.png'), edit_contract_path(contract) %></td>
+          <% else %>
+            <td></td>
+          <% end %>  
+          <td><%= link_to 'Aditar', new_amendment_path(contract)  %></td>
         <% else %>
           <td></td>
-        <% end %>  
-        <td><%= link_to 'Aditar', new_amendment_path(contract)  %></td>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

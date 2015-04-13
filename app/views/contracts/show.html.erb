@@ -33,7 +33,7 @@
 <% unless @contract.amendments.empty? %>
   <h2>Aditamentos</h2><hr>
   <ul>
-    <% @contract.amendments.each do |amendment| %>
+    <% @contract.amendments.reverse.each do |amendment| %>
       <li><%= "Número do aditamento: #{amendment.number}" %></li>
       <li><%= "Data de início: #{format_date(amendment.start_date)}" %></li>
       <li><%= "Data de vencimento: #{format_date(amendment.end_date)}" %></li>

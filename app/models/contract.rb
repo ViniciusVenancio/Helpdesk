@@ -11,4 +11,5 @@ class Contract < ActiveRecord::Base
 	validates :due_date, presence: true
 	validates :monthly_payment, presence: true
 	validates :sla, presence:true
+	validates :status, presence:true
 end

@@ -42,7 +42,7 @@ class ContractsController < ApplicationController
     end
 
     def contract_params
-      params.require(:contract).permit(:enterprise_id, :start_date, :due_date, :monthly_payment, :sla, :contract_type_id, :current_value)
+      params.require(:contract).permit(:enterprise_id, :start_date, :due_date, :monthly_payment, :sla, :contract_type_id, :current_value, :status)
     end
 
     def set_enterprises
