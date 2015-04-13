@@ -25,8 +25,7 @@ class AmendmentsController < ApplicationController
 
   def create
     @amendment = Amendment.new(amendment_params)
-    a = Amendment.where("contract_id = #{params[:amendment][:contract_id]}").last
-    a.nil? ? @amendment.number = 1 : @amendment.number = a.number + 1
+    @amendment.number = Amendment.where("contract_id = #{params[:amendment][:contract_id]}").count + 1
     @amendment.save
     respond_with(@amendment)
   end
@@ -53,13 +52,13 @@ class AmendmentsController < ApplicationController
     def set_contracts
       @contracts = Contract.all
     end
-    
+
     def update_contract_current_value(contract)
       #atribuo o valor dele ao contador
       sum = contract.monthly_payment
 
       #procuro todos os aditamentos desse contrato e retorno um array
-      amendments = Amendment.where('contract_id = ?', contract.id)
+      amendments = Amendment.where("contract_id = #{contract.id}")
 
       #faço o cálculo dos aditamentos
       amendments.each { |amendment| sum += amendment.value }
