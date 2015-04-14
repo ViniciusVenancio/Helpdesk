@@ -18,15 +18,8 @@ class AmendmentsController < ApplicationController
 
   def new
     @amendment = Amendment.new
-
     contract = Contract.find(params[:contract_id])
-
-    if Date.today - contract.due_date <= 30
-      @date = contract.due_date + 365
-    else
-      @date = contract.due_date
-    end
-
+    Date.today - contract.due_date <= 30 ? @date = contract.due_date + 365 : @date = contract.due_date + 1
     respond_with(@amendment)
   end
 
