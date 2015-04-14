@@ -105,7 +105,7 @@ class TicketsController < ApplicationController
   end
 
   def set_enterprises
-    @enterprises = Enterprise.all
+    @enterprises = Enterprise.where.not(user_id: nil)
   end
 
   #seto a empresa do usuário(customer) para o Ticket criado
