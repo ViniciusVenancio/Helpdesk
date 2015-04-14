@@ -52,7 +52,7 @@
 
 <p>
   <strong>Usuário:</strong>
-  <%= @enterprise.user.email %>
+  <%= @enterprise.user.email unless @enterprise.user.nil? %>
 </p>
 
 <a href="#" class="contracts-enterprise-button">Contratos | </a>

@@ -2,16 +2,16 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.label :enterprise_id %>
+    <%= f.label :enterprise_id, 'Empresa' %>
     <%= f.collection_select :enterprise_id, @enterprises, :id, :corporate_name %>
-    <%= f.label :contract_type_id %>
+    <%= f.label :contract_type_id, 'Pacote' %>
     <%= f.collection_select :contract_type_id, @types, :id, :name %>
     <%= f.label :status %>
     <%= f.select :status, options_for_select(["Em andamento", "Encerrado"])%>
-    <%= f.input :start_date %>
-    <%= f.input :due_date %>
-    <%= f.input :monthly_payment %>
-    <%= f.input :sla %>
+    <%= f.input :start_date, label: 'Data de início', order: [:day, :month, :year] %>
+    <%= f.input :due_date, label: 'Data de vencimento', order: [:day, :month, :year] %>
+    <%= f.input :monthly_payment, label: 'Mensalidade' %>
+    <%= f.input :sla, label: 'SLA' %>
   </div>
 
   <div class="actions">

@@ -38,14 +38,13 @@ class EnterprisesController < ApplicationController
     respond_with(@enterprise)
   end
 
-  def filter_user
-    @users = User.where("role = 'customer'")
-    @users.each {|user| user.enterprise.nil? }
-  end
-
   private
     def set_enterprise
       @enterprise = Enterprise.find(params[:id])
+    end
+
+    def filter_user
+      @users = User.where(role: 'customer').where.not(id: Enterprise.select('user_id'))
     end
 
     def enterprise_params

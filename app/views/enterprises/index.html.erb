@@ -33,7 +33,11 @@
           <td><%= enterprise.district %></td>
           <td><%= enterprise.city %></td>
           <td><%= enterprise.cep %></td>
-          <td><%= enterprise.user.email %></td>
+          <% unless enterprise.user.nil? %>
+            <td><%= enterprise.user.email %></td>
+          <% else %>
+            <td></td>
+          <% end %>  
           <td><%= link_to image_tag("visualizar.png"), enterprise %></td>
           <% if can? :edit, @enterprises %>
             <td><%= link_to image_tag("editar.png"), edit_enterprise_path(enterprise) %></td>
