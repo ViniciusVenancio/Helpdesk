@@ -2,11 +2,11 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :start_date %>
+    <%= f.input :start_date, label: 'Data de início', as:  %>
     <%= f.hidden_field :contract_id, :value => params[:contract_id] %>
-    <%= f.input :end_date %>
-    <%= f.input :value %>
-    <%= f.input :title %>
+    <%= f.input :end_date, label: 'Data do término' %>
+    <%= f.input :value, label: 'Valor'%>
+    <%= f.input :title, label: 'Título' %>
   </div>
 
   <div class="actions">

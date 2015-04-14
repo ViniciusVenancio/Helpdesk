@@ -1,3 +1,5 @@
+require 'date'
+
 class AmendmentsController < ApplicationController
   before_action :set_amendment, only: [:show, :edit, :update, :destroy]
   before_action :set_contracts, only: [:edit, :update, :create, :new]
@@ -16,6 +18,15 @@ class AmendmentsController < ApplicationController
 
   def new
     @amendment = Amendment.new
+
+    contract = Contract.find(params[:contract_id])
+
+    if Date.today - contract.due_date <= 30
+      @date = contract.due_date + 365
+    else
+      @date = contract.due_date
+    end
+
     respond_with(@amendment)
   end
 
