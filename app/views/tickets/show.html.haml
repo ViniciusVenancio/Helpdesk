@@ -1,12 +1,12 @@
 %ul.breadcrumbs
-  %li= link_to "Tickets", tickets_path
+  %li= link_to "Chamados", tickets_path
   %li= @ticket.id
 
-%h1 Ticket ##{@ticket.id}
+%h1 Chamado número #{@ticket.id}
 
 %table.small-12.medium-6
   %tr
-    %th{ scope: "row"} From:
+    %th{ scope: "row"} De:
     %td= @ticket.user
   %tr
   %tr
@@ -14,22 +14,22 @@
       %th{ scope: "row"} Enterprise:
       %td= @ticket.enterprise.corporate_name
   %tr
-    %th{ scope: "row" } Assigned to:
+    %th{ scope: "row" } Atribuído a:
     %td
       = @ticket.agent
-      (#{link_to "Change", edit_ticket_path(@ticket)})
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
   %tr
     %th{ scope: "row" } Status:
     %td
       = @ticket.status.humanize
-      (#{link_to "Change", edit_ticket_path(@ticket)})
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
   %tr
-    %th{ scope: "row" } Priority:
+    %th{ scope: "row" } Prioridade:
     %td
       = @ticket.priority.humanize
-      (#{link_to "Change", edit_ticket_path(@ticket)})
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
   %tr
-    %th{ scope: "row" } Subject:
+    %th{ scope: "row" } Assunto:
     %td
       = @ticket.subject
 
@@ -37,19 +37,19 @@
 
 %hr/
 
-%h3 Comments
+%h3 Comentários
 - @ticket.activity.each do |activity|
   - if activity.class.to_s == "Comment"
     = render "tickets/comment", comment: activity
   - else
     = render "tickets/version", version: activity
 
-%h4 Add a new comment
+%h4 Adicionar um novo comentário
 = simple_form_for [@ticket, @comment] do |f|
   %p= f.input :body, input_html: { rows: 5 }
   %p
     %em Processed with Markdown
   - if current_user.role?(:agent)
-    %p= f.input :sent_to_user, label: "Send email notification"
+    %p= f.input :sent_to_user, label: "Enviar e-mail de notificação"
 
-  %p= f.submit "Add Comment", class: "button"
+  %p= f.submit "Comentar", class: "button"

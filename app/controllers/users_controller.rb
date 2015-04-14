@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to users_path, notice: 'Users successfully updated.' }
+      format.html { redirect_to users_path, notice: 'Usuários atualizados com sucesso!.' }
       format.json { head :ok }
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'Usuário atualizado com sucesso!.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
