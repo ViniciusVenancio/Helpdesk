@@ -2,18 +2,18 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
+    <%= f.input :first_name, label: 'Nome' %>
+    <%= f.input :last_name, label: 'Sobrenome' %>
+    <%= f.input :email, label: 'E-mail' %>
     <% if can? :manage, User %>
-      <%= f.input :role, :collection => User::ROLES.collect {|r| [r.humanize, r]}, :prompt => false %>
+      <%= f.input :role, label: 'Categoria', :collection => User::ROLES.collect {|r| [r.humanize, r]}, :prompt => false %>
     <% end %>
   </div>
 
   <div class="actions">
     <ul class="inline-list">
-      <li><%= f.submit "Update", class: "button" %></li>
-      <li><%= link_to "Delete", @user, :method => :delete, :confirm => "Are you sure?", class: "button secondary" %></li>
+      <li><%= f.submit "Atualizar", class: "button" %></li>
+      <li><%= link_to "Excluir", @user, :method => :delete, :confirm => "Tem certeza?", class: "button secondary" %></li>
   </div>
 
-<% end -%>
+<% end %>

@@ -1,0 +1,56 @@
+<h1>Usuários</h1>
+<%= form_tag '/users/manage' do %>
+  <% User::ROLES.reverse.each do |role| %>
+    <h4>
+      <%= role.pluralize.humanize %>
+    </h4>
+    <% if @users[role].blank? %>
+      <p class="alert-box secondary">Não há <%= role.pluralize %>.</p>
+    <% else %>
+      <table class="small-12">
+        <thead>
+          <tr>
+            <th class="id">ID</th>
+            <th class="email">E-mail</th>
+            <th class="name">Nome</th>
+            <th class="role">Categoria</th>
+            <th class="actions">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users[role].each do |user| %>
+            <tr>
+              <%= hidden_field_tag "users[][id]", user.id %>
+              <td class="id">
+                <%= user.id %>
+              </td>
+              <td class="email">
+                <%= user.email %>
+              </td>
+              <td class="name">
+                <%= user.name %>
+              </td>
+              <% if user == current_user %>
+                <td class="role">
+                  <%= user.role.humanize %>
+                </td>
+                <td class="actions"></td>
+              <% else %>
+                <td class="role">
+                  <%= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role) %>
+                </td>
+                <td class="actions">
+                  <%= link_to "Editar", edit_user_path(user) %> |
+                  <%= link_to "Excluir", user, :confirm => "Tem certeza que deseja excluir #{user.name}?", :method => :delete %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+  <p>
+    <%= submit_tag "Utualizar", class: "button" %>
+  </p>
+<% end %>

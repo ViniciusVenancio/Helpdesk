@@ -6,7 +6,7 @@
     <%= @ticket.id %>
   </li>
 </ul>
-<h1>Chamado número #{@ticket.id}</h1>
+<h1>Chamado número <%= @ticket.id %></h1>
 <table class="small-12 medium-6">
   <tr>
     <th scope="row">De:</th>
@@ -27,21 +27,21 @@
     <th scope="row">Atribuído a:</th>
     <td>
       <%= @ticket.agent %>
-      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+      (<%= link_to "Trocar", edit_ticket_path(@ticket) %>)
     </td>
   </tr>
   <tr>
     <th scope="row">Status:</th>
     <td>
       <%= @ticket.status.humanize %>
-      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+      (<%= link_to "Trocar", edit_ticket_path(@ticket) %>)
     </td>
   </tr>
   <tr>
     <th scope="row">Prioridade:</th>
     <td>
       <%= @ticket.priority.humanize %>
-      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+      (<%= link_to "Trocar", edit_ticket_path(@ticket) %>)
     </td>
   </tr>
   <tr>

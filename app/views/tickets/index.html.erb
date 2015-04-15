@@ -3,25 +3,24 @@
     <%= link_to 'Novo chamado', new_ticket_path, class: "small round success button" %>
   </p>
 <% end %>
-<h2>Your tickets</h2>
+<h2>Seus chamados</h2><hr>
 <% Ticket::STATUSES.each do |status| %>
   <div class="group <%= status %>">
     <h4>
-      <%= status.humanize %>
-      tickets
+      Chamados <%= status.humanize %>
     </h4>
     <% if @tickets[status].blank? %>
       <p class="alert-box secondary">
-        No #{status} tickets.
+        Não há chamados <%= status %>.
       </p>
     <% else %>
       <table class="small-12">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Date</th>
-            <th>Subject</th>
-            <th>Priority</th>
+            <th>Data</th>
+            <th>Assunto</th>
+            <th>Prioridade</th>
           </tr>
         </thead>
         <% tickets = @tickets[status].group_by(&:priority) %>

@@ -19,8 +19,6 @@ class AmendmentsController < ApplicationController
   def new
     @amendment = Amendment.new
     contract = Contract.find(params[:contract_id])
-    @start_date = nil
-    @end_date = nil
 
     last_amendment = contract.amendments.last
 
@@ -30,9 +28,9 @@ class AmendmentsController < ApplicationController
     else
       end_date = last_amendment.end_date
       condition = Date.today - last_amendment.end_date < 30
-    end    
+    end
 
-    if Date.today - end_date >= 30 || Date.today + end_date <= 30
+    if Date.today - end_date >= 30 || (end_date - Date.today).abs <= 30
       @start_date = end_date + 1
       @end_date = end_date + 365
     elsif condition
