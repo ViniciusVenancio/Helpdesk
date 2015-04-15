@@ -23,20 +23,21 @@ class AmendmentsController < ApplicationController
     @end_date = nil
 
     if contract.amendments.empty?
-
-      if Date.today - contract.due_date >= 30 || Date.today - contract.due_date < 30
+      if Date.today - contract.due_date >= 30 || Date.today + contract.due_date <= 30
         @start_date = contract.due_date + 1
         @end_date = contract.due_date + 365
-      #elsif Date.today - contract.due_date
-        
+      elsif Date.today - contract.due_date < 30
+        @start_date = Date.today
+        @end_date = contract.end_date
       end
     else
       last_amendment = contract.amendments.last
-      if Date.today - last_amendment.end_date >= 30 || Date.today - last_amendment.end_date < 30
+      if Date.today - last_amendment.due_date >= 30 || Date.today + last_amendment.due_date <= 30
         @start_date = last_amendment.end_date + 1
         @end_date = last_amendment.end_date + 365
-      #else
-        
+      elsif Date.today - last_amendment.end_date < 30
+        @start_date = Date.today
+        @end_date = last_amendment.end_date
       end
     end
     
@@ -74,12 +75,6 @@ class AmendmentsController < ApplicationController
 
     def set_contracts
       @contracts = Contract.all
-    end
-
-    def calculate_dates(contract)
-      if Date.today - contract.due_date >= 30 || Date.today - contract.due_date <= 30
-        yield
-      end
     end
 
     def update_contract_current_value
