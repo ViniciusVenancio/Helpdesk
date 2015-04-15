@@ -2,9 +2,9 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :start_date, label: 'Data de início', selected: @date, order: [:day, :month, :year]  %>
+    <%= f.input :start_date, label: 'Data de início', selected: @start_date, order: [:day, :month, :year]  %>
     <%= f.hidden_field :contract_id, :value => params[:contract_id] %>
-    <%= f.input :end_date, label: 'Data do término', as: :date, selected: @date, order: [:day, :month, :year] %>
+    <%= f.input :end_date, label: 'Data do término', as: :date, selected: @end_date, order: [:day, :month, :year] %>
     <%= f.input :value, label: 'Valor'%>
     <%= f.input :title, label: 'Título' %>
   </div>

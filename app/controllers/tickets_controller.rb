@@ -49,7 +49,6 @@ class TicketsController < ApplicationController
 
     parametro = params[:ticket][:enterprise_id]
 
-
     #qualquer problema, alterar o ||= para if @ticket.user.nil?
     if parametro
       @ticket.user ||= Enterprise.find(parametro).user

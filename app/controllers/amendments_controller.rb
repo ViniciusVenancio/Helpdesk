@@ -19,7 +19,27 @@ class AmendmentsController < ApplicationController
   def new
     @amendment = Amendment.new
     contract = Contract.find(params[:contract_id])
-    Date.today - contract.due_date <= 30 ? @date = contract.due_date + 365 : @date = contract.due_date + 1
+    @start_date = nil
+    @end_date = nil
+
+    if contract.amendments.empty?
+
+      if Date.today - contract.due_date >= 30 || Date.today - contract.due_date < 30
+        @start_date = contract.due_date + 1
+        @end_date = contract.due_date + 365
+      #elsif Date.today - contract.due_date
+        
+      end
+    else
+      last_amendment = contract.amendments.last
+      if Date.today - last_amendment.end_date >= 30 || Date.today - last_amendment.end_date < 30
+        @start_date = last_amendment.end_date + 1
+        @end_date = last_amendment.end_date + 365
+      #else
+        
+      end
+    end
+    
     respond_with(@amendment)
   end
 
@@ -54,6 +74,12 @@ class AmendmentsController < ApplicationController
 
     def set_contracts
       @contracts = Contract.all
+    end
+
+    def calculate_dates(contract)
+      if Date.today - contract.due_date >= 30 || Date.today - contract.due_date <= 30
+        yield
+      end
     end
 
     def update_contract_current_value
