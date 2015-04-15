@@ -1,0 +1,80 @@
+<ul class="breadcrumbs">
+  <li>
+    <%= link_to "Chamados", tickets_path %>
+  </li>
+  <li>
+    <%= @ticket.id %>
+  </li>
+</ul>
+<h1>Chamado número #{@ticket.id}</h1>
+<table class="small-12 medium-6">
+  <tr>
+    <th scope="row">De:</th>
+    <td>
+      <%= @ticket.user %>
+    </td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <% unless current_user.role? :customer %>
+      <th scope="row">Enterprise:</th>
+      <td>
+        <%= @ticket.enterprise.corporate_name %>
+      </td>
+    <% end %>
+  </tr>
+  <tr>
+    <th scope="row">Atribuído a:</th>
+    <td>
+      <%= @ticket.agent %>
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">Status:</th>
+    <td>
+      <%= @ticket.status.humanize %>
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">Prioridade:</th>
+    <td>
+      <%= @ticket.priority.humanize %>
+      (#{link_to "Trocar", edit_ticket_path(@ticket)})
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">Assunto:</th>
+    <td>
+      <%= @ticket.subject %>
+    </td>
+  </tr>
+</table>
+<%= markdownify @ticket.body %>
+<hr/>
+<h3>Comentários</h3>
+<% @ticket.activity.each do |activity| %>
+  <% if activity.class.to_s == "Comment" %>
+    <%= render "tickets/comment", comment: activity %>
+  <% else %>
+    <%= render "tickets/version", version: activity %>
+  <% end %>
+<% end %>
+<h4>Adicionar um novo comentário</h4>
+<%= simple_form_for [@ticket, @comment] do |f| %>
+  <p>
+    <%= f.input :body, input_html: { rows: 5 } %>
+  </p>
+  <p>
+    <em>Processed with Markdown</em>
+  </p>
+  <% if current_user.role?(:agent) %>
+    <p>
+      <%= f.input :sent_to_user, label: "Enviar e-mail de notificação" %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.submit "Comentar", class: "button" %>
+  </p>
+<% end %>

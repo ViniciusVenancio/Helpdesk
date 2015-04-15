@@ -1,0 +1,24 @@
+<% @user = User.where(id: version.whodunnit).first %>
+<% version.changeset.slice(:priority, :status, :subject, :body).each do |attribute, values| %>
+  <div class="alert-box round secondary">
+    <strong>
+      <%= @user %>
+    </strong>
+    changed the
+    <strong>
+      <%= attribute %>
+    </strong>
+    from
+    <strong>
+      <%= values.first %>
+    </strong>
+    to
+    <strong>
+      <%= values.last %>
+    </strong>
+    <em class="label success round">
+      <%= time_ago_in_words(version.created_at).humanize %>
+      ago
+    </em>
+  </div>
+<% end %>

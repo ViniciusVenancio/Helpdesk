@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_enterprises
   after_action :set_enterprise, only: [:create]
+  before_action :verify_user_enteprise, only: [:new]
 
   # GET /tickets
   # GET /tickets.json
@@ -114,6 +115,10 @@ class TicketsController < ApplicationController
         @ticket.update_attribute(:enterprise_id, current_user.enterprise.id)
       end
     end
+  end
+
+  def verify_user_enteprise
+    redirect_to root_path if current_user.enterprise.nil? and current_user.role? :customer
   end
 
 end

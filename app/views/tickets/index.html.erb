@@ -1,0 +1,52 @@
+<% unless current_user.enterprise.nil? && current_user.role.eql?('customer') %>
+  <p class="right">
+    <%= link_to 'Novo chamado', new_ticket_path, class: "small round success button" %>
+  </p>
+<% end %>
+<h2>Your tickets</h2>
+<% Ticket::STATUSES.each do |status| %>
+  <div class="group <%= status %>">
+    <h4>
+      <%= status.humanize %>
+      tickets
+    </h4>
+    <% if @tickets[status].blank? %>
+      <p class="alert-box secondary">
+        No #{status} tickets.
+      </p>
+    <% else %>
+      <table class="small-12">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <% tickets = @tickets[status].group_by(&:priority) %>
+        <% Ticket::PRIORITIES.reverse.each do |priority| %>
+          <% unless tickets[priority].to_s.empty? %>
+            <% tickets[priority].each do |ticket| %>
+              <tr class="<%= ticket.priority %> <%= ticket.status %>" id="ticket-<%= ticket.id %>">
+                <td class="id">
+                  <%= link_to ticket.id, ticket %>
+                </td>
+                <td class="date">
+                  <%= time_ago_in_words(ticket.created_at).humanize %>
+                  ago
+                </td>
+                <td class="subject">
+                  <%= link_to ticket.subject, url_for(ticket) %>
+                </td>
+                <td class="priority <%= ticket.priority %>">
+                  <%= ticket.priority.humanize %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+<% end %>

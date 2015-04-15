@@ -1,0 +1,19 @@
+<%= simple_form_for(@ticket) do |f| %>
+  <%= f.error_notification %>
+  <div class="inputs">
+    <% if can? :manage, @ticket %>
+      <%= f.input :agent_id, :collection => User.agents.collect{|a| [a.name, a.id]}, :prompt => false %>
+      <%= f.input :status, :collection => Ticket::STATUSES.collect{|s| [s.humanize, s] }, :prompt => false %>
+      <%= f.input :priority, :collection => Ticket::PRIORITIES.collect{|p| [p.humanize, p] }, :prompt => false %>
+      <% if current_user.role?(:admin) || current_user.role?(:agent)  %>
+        <%= f.label :enterprise %>
+        <%= f.collection_select :enterprise_id, @enterprises, :id, :corporate_name %>
+      <% end %>
+    <% end %>
+    <%= f.input :subject %>
+    <%= f.input :body, input_html: { rows: 8 } %>
+    <div class="actions">
+      <%= f.submit class: "button" %>
+    </div>
+  </div>
+<% end %>

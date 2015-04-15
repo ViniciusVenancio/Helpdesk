@@ -1,0 +1,13 @@
+<div class="<%= ("callout" if comment.sent_to_user?) %> panel">
+  <p>
+    <strong>
+      <%= comment.user %>
+    </strong>
+    <%= raw("<em>(Sent to user)</em>") if comment.sent_to_user? %>
+    <%= time_ago_in_words(comment.created_at).humanize %>
+    ago
+  </p>
+  <p>
+    <%= markdownify comment.body %>
+  </p>
+</div>

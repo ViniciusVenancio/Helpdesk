@@ -1,0 +1,11 @@
+<ul class="breadcrumbs">
+  <li>
+    <%= link_to "Tickets", tickets_path %>
+  </li>
+  <li>
+    <%= link_to @ticket.id, @ticket %>
+  </li>
+  <li>Edit</li>
+</ul>
+<h1>Editing ticket</h1>
+<%= render 'form' %>

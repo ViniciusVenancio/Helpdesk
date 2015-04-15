@@ -22,25 +22,24 @@ class AmendmentsController < ApplicationController
     @start_date = nil
     @end_date = nil
 
+    last_amendment = contract.amendments.last
+
     if contract.amendments.empty?
-      if Date.today - contract.due_date >= 30 || Date.today + contract.due_date <= 30
-        @start_date = contract.due_date + 1
-        @end_date = contract.due_date + 365
-      elsif Date.today - contract.due_date < 30
-        @start_date = Date.today
-        @end_date = contract.end_date
-      end
+      end_date = contract.due_date
+      condition = Date.today - contract.due_date < 30
     else
-      last_amendment = contract.amendments.last
-      if Date.today - last_amendment.due_date >= 30 || Date.today + last_amendment.due_date <= 30
-        @start_date = last_amendment.end_date + 1
-        @end_date = last_amendment.end_date + 365
-      elsif Date.today - last_amendment.end_date < 30
+      end_date = last_amendment.end_date
+      condition = Date.today - last_amendment.end_date < 30
+    end    
+
+    if Date.today - end_date >= 30 || Date.today + end_date <= 30
+      @start_date = end_date + 1
+      @end_date = end_date + 365
+    elsif condition
         @start_date = Date.today
-        @end_date = last_amendment.end_date
-      end
+        @end_date = end_date
     end
-    
+
     respond_with(@amendment)
   end
 
