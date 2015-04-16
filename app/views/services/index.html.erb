@@ -1,12 +1,12 @@
-<h1>Listing services</h1>
+<h1>Serviços</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Contract type</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Categoria</th>
+      <th>Pacote</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,15 +14,15 @@
   </thead>
 
   <tbody>
-    <% @services.each do |service| %>
+    <% @services.includes(:contract_type).each do |service| %>
       <tr>
         <td><%= service.name %></td>
         <td><%= service.description %></td>
         <td><%= service.category %></td>
         <td><%= service.contract_type.name %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag('visualizar.png'), service %></td>
+        <td><%= link_to image_tag('editar.png'), edit_service_path(service) %></td>
+        <td><%= link_to image_tag('deletar.png'), service, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Service', new_service_path %>
+<%= link_to 'Novo serviço', new_service_path %>
