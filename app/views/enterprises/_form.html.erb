@@ -13,7 +13,7 @@
     <%= f.input :city, label: 'Cidade' %>
     <%= f.input :cep, label: 'CEP' %>
     <%= f.label :user_id, 'Usuário' %>
-    <%= f.collection_select :user_id, @users, :id, :email, {include_blank: true} %>
+    <%= f.collection_select(:user_id, @users, :id, :email, {include_blank: true}) %>
   </div>
 
   <div class="actions">
