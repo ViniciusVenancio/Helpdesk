@@ -7,32 +7,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require functions_helpdesk
 //
 //= require_tree .
 
 Turbolinks.enableTransitionCache();
 
 //Busco o endereço pelo CEP  
-$(document).ready(function(){
-  if($("#enterprise_cep").length > 0){
-  	$("#enterprise_cep").on('focusout', function() {
+if($("#enterprise_cep").length > 0) {
+	$("#enterprise_cep").on('focusout', function() {
+  	var cep = $("#enterprise_cep").val().replace(/[^0-9]/, ''); 
+   	if(cep != "") {
+    	var url = 'http://cep.correiocontrol.com.br/'+cep+'.json';
+     	$.getJSON(url, function(json) {
+       	$("#enterprise_adress").val(json.logradouro);
+       	$("#enterprise_district").val(json.bairro);
+       	$("#enterprise_city").val(json.localidade);
+       	$("#enterprise_number").focus();
+     	}).fail(function() {
+       	$(".cep-error").show("slow");
+       	$("#enterprise_cep").val("").focus();
+       	setTimeout(function(){ jQuery(".cep-error").hide("slow"); }, 5000);
+     	});
+   	}
+ 	});
+}
 
-  		if($(".cep-error").css('display') == 'inline-block') {
-  			$(".cep-error").hide("slow");
-  		}
-
-    	var cep = $(this).val().replace(/[^0-9]/, ''); 
-     	if(cep != "") {
-      	var url = 'http://cep.correiocontrol.com.br/'+cep+'.json';
-      	$.getJSON(url, function(json){
-        	$("#enterprise_adress").val(json.logradouro);
-        	$("#enterprise_district").val(json.bairro);
-        	$("#enterprise_city").val(json.localidade);
-      	}).fail(function(){
-        	$(".cep-error").show("slow");
-      	});
-    	}
-  	});
-	}
-});
+if($('.contracts-enterprise-button').size() > 0) {
+	$('.contracts-enterprise-button').click(function() {
+		var element = $(this).siblings('div');
+		if($(element).css('display') == 'block') {
+			$(element).hide('slow');
+		} else {
+			$(element).show('slow');
+		}
+		return false;
+	});
+}
