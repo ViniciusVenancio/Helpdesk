@@ -1,7 +1,7 @@
 class EnterprisesController < ApplicationController
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :filter_user, only: [:new, :edit]
+  #before_action :filter_user, only: [:new, :edit]
 
   respond_to :html
 
@@ -24,7 +24,6 @@ class EnterprisesController < ApplicationController
 
   def create
     @enterprise = Enterprise.new(enterprise_params)
-    @enterprise.save
     respond_with(@enterprise)
   end
 
@@ -43,9 +42,9 @@ class EnterprisesController < ApplicationController
       @enterprise = Enterprise.find(params[:id])
     end
 
-    def filter_user
-      @users = User.where("role = 'customer' AND ID NOT IN ( SELECT user_id FROM ENTERPRISES WHERE USER_ID IS NOT NULL)")
-    end
+    #def filter_user
+      #@users = User.where("role = 'customer' AND ID NOT IN ( SELECT user_id FROM ENTERPRISES WHERE USER_ID IS NOT NULL)")
+    #end
 
     def enterprise_params
       params.require(:enterprise).permit(:name, :password, :corporate_name, :phone, :cnpj, :state_registration, :adress, :number, :district, :city, :cep, :email, :user_id)

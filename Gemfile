@@ -2,10 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.9'
 gem 'mailman', '~> 0.7.0'
-gem 'brazilian-rails'
-gem 'validates_cpf_cnpj'
+gem "cpf_cnpj"
 gem 'pg'
-
 gem 'devise', '~> 3.4.1'
 gem 'dotenv-rails', '~> 0.9.0'
 gem 'cancan', '~> 1.6.10'

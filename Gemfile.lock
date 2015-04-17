@@ -28,36 +28,6 @@ GEM
     ansi (1.5.0)
     arel (4.0.2)
     bcrypt (3.1.10)
-    brI18n (3.3.0)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brazilian-rails (3.3.0)
-      brI18n (= 3.3.0)
-      brcep (= 3.3.0)
-      brcpfcnpj (= 3.3.0)
-      brdata (= 3.3.0)
-      brdinheiro (= 3.3.0)
-      brhelper (= 3.3.0)
-      brnumeros (= 3.3.0)
-      brstring (= 3.3.0)
-    brcep (3.3.0)
-    brcpfcnpj (3.3.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brdata (3.3.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brdinheiro (3.3.0)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      brnumeros (= 3.3.0)
-    brhelper (3.3.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brnumeros (3.3.0)
-    brstring (3.3.0)
-      activesupport (>= 3.0.0)
     builder (3.1.4)
     cancan (1.6.10)
     celluloid (0.16.0)
@@ -70,6 +40,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    cpf_cnpj (0.2.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -201,8 +172,6 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    validates_cpf_cnpj (0.2.0)
-      activemodel (>= 3.0.0)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -210,8 +179,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brazilian-rails
   cancan (~> 1.6.10)
+  cpf_cnpj
   devise (~> 3.4.1)
   dotenv-rails (~> 0.9.0)
   factory_girl_rails
@@ -233,4 +202,3 @@ DEPENDENCIES
   turbolinks (~> 2.2.1)
   turn
   uglifier (~> 2.4.0)
-  validates_cpf_cnpj

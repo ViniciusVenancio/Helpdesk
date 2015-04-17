@@ -7,13 +7,14 @@
     <%= f.input :phone, label: 'Telefone' %>
     <%= f.input :cnpj, label: 'CNPJ' %>
     <%= f.input :state_registration, label: 'Inscrição Estadual' %>
+    <%= f.input :cep, label: 'CEP' %>
+    <span class="cep-error">CEP não encontrado!</span>
     <%= f.input :adress, label: 'Endereço' %>
     <%= f.input :number, label: 'Número' %>
     <%= f.input :district, label: 'Bairro' %>
     <%= f.input :city, label: 'Cidade' %>
-    <%= f.input :cep, label: 'CEP' %>
     <%= f.label :user_id, 'Usuário' %>
-    <%= f.collection_select(:user_id, @users, :id, :email, {include_blank: true}) %>
+    <%= f.collection_select(:user_id, User.where("role = 'customer' AND ID NOT IN ( SELECT user_id FROM ENTERPRISES WHERE USER_ID IS NOT NULL)"), :id, :email, {include_blank: true}) %>
   </div>
 
   <div class="actions">

@@ -6,12 +6,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
 //= require functions_helpdesk
 //
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-
 Turbolinks.enableTransitionCache();
+
+//Busco o endereço pelo CEP  
+$(document).ready(function(){
+  if($("#enterprise_cep").length > 0){
+  	$("#enterprise_cep").on('focusout', function() {
+
+  		if($(".cep-error").css('display') == 'inline-block') {
+  			$(".cep-error").hide("slow");
+  		}
+
+    	var cep = $(this).val().replace(/[^0-9]/, ''); 
+     	if(cep != "") {
+      	var url = 'http://cep.correiocontrol.com.br/'+cep+'.json';
+      	$.getJSON(url, function(json){
+        	$("#enterprise_adress").val(json.logradouro);
+        	$("#enterprise_district").val(json.bairro);
+        	$("#enterprise_city").val(json.localidade);
+      	}).fail(function(){
+        	$(".cep-error").show("slow");
+      	});
+    	}
+  	});
+	}
+});
