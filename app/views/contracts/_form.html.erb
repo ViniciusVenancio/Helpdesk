@@ -10,11 +10,11 @@
     <%= f.select :status, options_for_select(["Em andamento", "Encerrado"])%>
     <%= f.input :start_date, label: 'Data de início', order: [:day, :month, :year] %>
     <%= f.input :due_date, label: 'Data de vencimento', order: [:day, :month, :year] %>
-    <%= f.input :monthly_payment, label: 'Mensalidade' %>
+    <%= f.input :monthly_payment, label: 'Mensalidade', placeholder: '###.##' %>
     <%= f.input :sla, label: 'SLA' %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Criar Contrato' %>
   </div>
 <% end %>

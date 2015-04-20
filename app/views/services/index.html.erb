@@ -18,7 +18,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.description %></td>
-        <td><%= service.category %></td>
+        <td><%= format_package(service.category) %></td>
         <td><%= service.contract_type.name %></td>
         <td><%= link_to image_tag('visualizar.png'), service %></td>
         <td><%= link_to image_tag('editar.png'), edit_service_path(service) %></td>

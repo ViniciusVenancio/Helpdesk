@@ -2,14 +2,14 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :category %>
-    <%= f.label :contract_type_id %>
+    <%= f.input :name, label: 'Nome' %>
+    <%= f.input :description, label: 'Descrição' %>
+    <%= f.input :category, label: 'Categoria' %>
+    <%= f.label :contract_type_id, 'Pacote' %>
     <%= f.collection_select :contract_type_id, @types, :id, :name %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Criar Serviço' %>
   </div>
 <% end %>

@@ -12,7 +12,7 @@
 
 <p>
   <strong>Categoria:</strong>
-  <%= @service.category %>
+  <%= format_package(@service.category) %>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 </p>
 
 <p>
-  <strong>Empresas:</strong>
+  <strong>Empresas:</strong><br>
   <% @service.contract_type.contracts.includes(:enterprise).select(:enterprise_id).group(:enterprise_id).each do |contract| %>
   	<%= contract.enterprise.corporate_name %><br>
   <% end %>

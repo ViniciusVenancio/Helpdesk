@@ -12,12 +12,12 @@
 
 <p>
   <strong>Data de início:</strong>
-  <%= @contract.start_date %>
+  <%= format_date(@contract.start_date) %>
 </p>
 
 <p>
   <strong>Data de vencimento:</strong>
-  <%= @contract.due_date %>
+  <%= format_date(@contract.due_date) %>
 </p>
 
 <p>

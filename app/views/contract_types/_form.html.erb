@@ -2,14 +2,14 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :value %>
-    <%= f.label :value_type %>
+    <%= f.input :name, label: 'Nome' %>
+    <%= f.input :description, label: 'Descrição' %>
+    <%= f.input :value, label: 'Valor', placeholder: '###.##' %>
+    <%= f.label :value_type, 'Tipo de valor' %>
     <%= f.select(:value_type, options_for_select([["Hora", "H"], ["Dia", "D"], ["Mês", "M"], ["Ano", "Y"]])) %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Criar Pacote' %>
   </div>
 <% end %>

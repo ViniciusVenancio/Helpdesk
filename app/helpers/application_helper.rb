@@ -35,4 +35,17 @@ module ApplicationHelper
       when 'Y' then 'Ano'
     end
   end
+
+  def format_ticket(status)
+    status.capitalize!
+    case status
+      when 'Pending' then 'pendentes'
+      when 'Open' then 'em aberto'
+      when 'Closed' then 'fechados'
+      when 'Medium' then 'Médio'
+      when 'Low' then 'Baixa'
+      when 'High' then 'Alta'
+        
+    end
+  end
 end

@@ -7,11 +7,11 @@
 <% Ticket::STATUSES.each do |status| %>
   <div class="group <%= status %>">
     <h4>
-      Chamados <%= status.humanize %>
+      Chamados <%= format_ticket(status.humanize) %>
     </h4>
     <% if @tickets[status].blank? %>
       <p class="alert-box secondary">
-        Não há chamados <%= status %>.
+        Não há chamados <%= format_ticket(status) %>.
       </p>
     <% else %>
       <table class="small-12">
@@ -39,7 +39,7 @@
                   <%= link_to ticket.subject, url_for(ticket) %>
                 </td>
                 <td class="priority <%= ticket.priority %>">
-                  <%= ticket.priority.humanize %>
+                  <%= format_ticket(ticket.priority.humanize) %>
                 </td>
               </tr>
             <% end %>
