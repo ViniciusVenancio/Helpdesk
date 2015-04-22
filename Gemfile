@@ -19,8 +19,8 @@ gem 'turbolinks', '~> 2.2.1'
 gem 'uglifier', '~> 2.4.0'
 
 group :development do
-  gem "foreman"
-  gem "pry-rails"
+  gem 'foreman'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -29,4 +29,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'turn', require: false
+end
+
+group :test, :development do
+	gem 'rspec-rails', '~> 3.0'
 end
