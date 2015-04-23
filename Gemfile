@@ -17,6 +17,7 @@ gem 'haml', '~> 4.0.5'
 gem 'sass-rails'
 gem 'turbolinks', '~> 2.2.1'
 gem 'uglifier', '~> 2.4.0'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development do
   gem 'foreman'

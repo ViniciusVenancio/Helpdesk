@@ -46,7 +46,7 @@ class AmendmentsController < ApplicationController
 
   def create
     @amendment = Amendment.new(amendment_params)
-    @amendment.number = Amendment.where("contract_id = #{params[:amendment][:contract_id]}").count + 1
+    @amendment.number = Amendment.where("contract_id = ?", params[:amendment][:contract_id]).count + 1
     @amendment.save
     respond_with(@amendment)
   end
@@ -63,7 +63,7 @@ class AmendmentsController < ApplicationController
 
   private
     def set_amendment
-      @amendment = Amendment.find(params[:id])
+      @amendment = Amendment.friendly.find(params[:id])
     end
 
     def amendment_params

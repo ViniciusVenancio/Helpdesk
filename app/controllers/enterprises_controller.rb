@@ -43,7 +43,7 @@ class EnterprisesController < ApplicationController
     end
 
     def filter_user
-      @users = User.where("role = 'customer' AND ID NOT IN ( SELECT user_id FROM ENTERPRISES WHERE USER_ID IS NOT NULL)")
+      @users = User.without_enterprise
     end
 
     def enterprise_params

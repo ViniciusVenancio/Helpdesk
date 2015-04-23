@@ -20,5 +20,4 @@ class Enterprise < ActiveRecord::Base
 	def validates_cnpj
 		errors.add("cnpj", "CNPJ inválido!") unless CNPJ.valid?(:cnpj)
 	end
-
 end

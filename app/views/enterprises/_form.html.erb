@@ -13,7 +13,11 @@
     <%= f.input :number, label: 'Número' %>
     <%= f.input :district, label: 'Bairro' %>
     <%= f.input :city, label: 'Cidade' %>
-    <%= f.input :user_id, label: 'Usuário', collection: @users, value_method: :id, group_method: :email, include_blank: true %>
+    <% if @enterprise.user.nil? %>
+      <%= f.input :user_id, label: 'Usuário', collection: @users, value_method: :id, group_method: :email, include_blank: true %>
+    <% else %>
+      <%= f.input :user_id, disabled: true, label: 'Usuário' %>
+    <% end %>
   </div>
 
   <div class="actions">

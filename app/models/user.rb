@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
     User.agents.first
   end
 
+  def self.without_enterprise
+    where("role = ? AND ID NOT IN (SELECT user_id FROM ENTERPRISES WHERE USER_ID IS NOT NULL)", "customer")
+  end
+
   protected
 
   def set_default_role
