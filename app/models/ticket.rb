@@ -27,7 +27,6 @@ class Ticket < ActiveRecord::Base
                     :set_default_priority,
                     :create_user
 
-
   def activity
     (comments + versions).sort_by(&:created_at)
   end
