@@ -34,4 +34,6 @@ end
 
 group :test, :development do
 	gem 'rspec-rails', '~> 3.0'
+	gem "capybara"
+	gem 'rspec-collection_matchers'
 end

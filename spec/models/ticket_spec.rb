@@ -9,7 +9,5 @@ describe Ticket do
 		ticket.user = user
 		expect(ticket.user).not_to be_nil
 	end
-
-	it "must have a password" do
-	end
+	
 end

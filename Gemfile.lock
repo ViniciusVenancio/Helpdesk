@@ -30,6 +30,12 @@ GEM
     bcrypt (3.1.10)
     builder (3.1.4)
     cancan (1.6.10)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
@@ -93,8 +99,11 @@ GEM
       maildir (>= 0.5.0)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.6.2)
     minitest (4.7.5)
     multi_json (1.11.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paper_trail (4.0.0.beta2)
       activerecord (>= 3.0, < 6.0)
@@ -130,6 +139,8 @@ GEM
     redcarpet (3.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -194,12 +205,15 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   cancan (~> 1.6.10)
+  capybara
   cpf_cnpj
   devise (~> 3.4.1)
   dotenv-rails (~> 0.9.0)
@@ -215,6 +229,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.9)
   redcarpet (~> 3.0.0)
+  rspec-collection_matchers
   rspec-rails (~> 3.0)
   sass-rails
   shoulda-context
