@@ -18,7 +18,7 @@ class EnterprisesControllerTest < ActionController::TestCase
 
   test "should create enterprise" do
     assert_difference('Enterprise.count') do
-      post :create, enterprise: { adress: @enterprise.adress, cep: @enterprise.cep, city: @enterprise.city, cnpj: @enterprise.cnpj, corporate_name: @enterprise.corporate_name, district: @enterprise.district, email: @enterprise.email, name: @enterprise.name, number: @enterprise.number, password: @enterprise.password, phone: @enterprise.phone, state_registration: @enterprise.state_registration, user_id: @enterprise.user_id }
+      post :create, enterprise: { adress: @enterprise.adress, cep: @enterprise.cep, city: @enterprise.city, cnpj: @enterprise.cnpj, corporate_name: @enterprise.corporate_name, district: @enterprise.district, email: @enterprise.email, name: @enterprise.name, number: @enterprise.number, phone: @enterprise.phone, state_registration: @enterprise.state_registration, user_id: @enterprise.user_id }
     end
 
     assert_redirected_to enterprise_path(assigns(:enterprise))
@@ -35,7 +35,7 @@ class EnterprisesControllerTest < ActionController::TestCase
   end
 
   test "should update enterprise" do
-    patch :update, id: @enterprise, enterprise: { adress: @enterprise.adress, cep: @enterprise.cep, city: @enterprise.city, cnpj: @enterprise.cnpj, corporate_name: @enterprise.corporate_name, district: @enterprise.district, email: @enterprise.email, name: @enterprise.name, number: @enterprise.number, password: @enterprise.password, phone: @enterprise.phone, state_registration: @enterprise.state_registration, user_id: @enterprise.user_id }
+    patch :update, id: @enterprise, enterprise: { adress: @enterprise.adress, cep: @enterprise.cep, city: @enterprise.city, cnpj: @enterprise.cnpj, corporate_name: @enterprise.corporate_name, district: @enterprise.district, email: @enterprise.email, name: @enterprise.name, number: @enterprise.number, phone: @enterprise.phone, state_registration: @enterprise.state_registration, user_id: @enterprise.user_id }
     assert_redirected_to enterprise_path(assigns(:enterprise))
   end
 

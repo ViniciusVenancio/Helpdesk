@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.friendly.find(params[:id])
     @comment = Comment.new
 
     respond_to do |format|
@@ -40,7 +40,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1/edit
   def edit
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.friendly.find(params[:id])
   end
 
   # POST /tickets
@@ -52,7 +52,7 @@ class TicketsController < ApplicationController
 
     #qualquer problema, alterar o ||= para if @ticket.user.nil?
     if parametro
-      @ticket.user ||= Enterprise.find(parametro).user
+      @ticket.user ||= Enterprise.friendly.find(parametro).user
     else
       @ticket.user ||= current_user
     end
@@ -73,7 +73,7 @@ class TicketsController < ApplicationController
   # PUT /tickets/1
   # PUT /tickets/1.json
   def update
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.friendly.find(params[:id])
 
     respond_to do |format|
       if @ticket.update_attributes(ticket_params)
@@ -89,7 +89,7 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1
   # DELETE /tickets/1.json
   def destroy
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.friendly.find(params[:id])
     @ticket.destroy
 
     respond_to do |format|
