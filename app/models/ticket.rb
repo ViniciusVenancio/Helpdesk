@@ -1,6 +1,4 @@
 class Ticket < ActiveRecord::Base
-  extend FriendlyId
-
   belongs_to :user
   belongs_to :agent, :class_name => "User"
   has_many :comments
@@ -17,9 +15,6 @@ class Ticket < ActiveRecord::Base
   validates :status, :inclusion => { :in => Ticket::STATUSES }
   validates :priority, :inclusion => { :in => Ticket::PRIORITIES }
   validates :token, :presence => true, :uniqueness => true
-  validates_presence_of :slug
-
-  friendly_id :subject, use: [:slugged, :history]
 
   after_initialize :generate_token
 
