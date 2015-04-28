@@ -16,7 +16,6 @@ class Ability
       can :manage, Ticket do |ticket|
         ticket.agent_id == user.id or user.role? :admin
       end
-    
       cannot :update_status, Ticket
     end
   end

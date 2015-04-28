@@ -82,7 +82,7 @@ class AmendmentsController < ApplicationController
       sum = contract.monthly_payment
 
       #procuro todos os aditamentos desse contrato e retorno um array
-      amendments = Amendment.where("contract_id = #{contract.id}")
+      amendments = Amendment.where("contract_id = ?", contract.id)
 
       #faço o cálculo dos aditamentos
       amendments.each { |amendment| sum += amendment.value }

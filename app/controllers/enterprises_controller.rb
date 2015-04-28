@@ -24,6 +24,7 @@ class EnterprisesController < ApplicationController
 
   def create
     @enterprise = Enterprise.new(enterprise_params)
+    @enterprise.save
     respond_with(@enterprise)
   end
 
