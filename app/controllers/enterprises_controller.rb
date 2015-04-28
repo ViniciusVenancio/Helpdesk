@@ -2,6 +2,7 @@ class EnterprisesController < ApplicationController
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :filter_user, only: [:new, :edit]
+  before_action :set_enterprises, only: :new
 
   respond_to :html
 
@@ -45,6 +46,10 @@ class EnterprisesController < ApplicationController
 
     def filter_user
       @users = User.without_enterprise
+    end
+
+    def set_enterprises
+      @enterprsies = Enterprise.all
     end
 
     def enterprise_params

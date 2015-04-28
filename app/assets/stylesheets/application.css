@@ -10,6 +10,15 @@
 
 @import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:300italic,600italic,300,600);
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 60px; /* altura do seu footer */
+}
+
 .contracts-enterprise, .cep-error {
 	display: none;
 }
@@ -33,6 +42,8 @@ footer {
 	height: 50px;
 	margin-top: 10px;
 	display: table;
+	position: absolute;
+	bottom: 0;
 }
 
 footer > * {
