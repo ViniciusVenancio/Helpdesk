@@ -13,7 +13,9 @@ Aszist::Application.routes.draw do
 
   resources :enterprises
 
-  devise_for :users
+  devise_for :users, controllers: {sessions: 'users/sessions'}
+
+  #devise_for :users
 
   resources :tickets do
     resources :comments
