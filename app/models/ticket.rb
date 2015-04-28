@@ -15,6 +15,7 @@ class Ticket < ActiveRecord::Base
   validates :status, :inclusion => { :in => Ticket::STATUSES }
   validates :priority, :inclusion => { :in => Ticket::PRIORITIES }
   validates :token, :presence => true, :uniqueness => true
+  validates :enterprise_id, presence: true
 
   after_initialize :generate_token
 
