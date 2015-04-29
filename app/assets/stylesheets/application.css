@@ -26,7 +26,9 @@ html, body {
 	width: 100%;
 	background: #E6E6E6!important;
   border-bottom: 3px solid #C7C7C7;
-  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 9999999999;
 }
 
 nav.top-bar {
@@ -46,7 +48,7 @@ nav.top-bar {
 }
 
 .content {
-	padding-bottom: 70px;
+	padding: 70px 0;
 }
 
 footer {
@@ -87,4 +89,19 @@ footer > * {
 
 .label.round {
 	vertical-align: middle;
+}
+
+.info-something {
+	width: 40%;
+	border-bottom: 3px solid #C7C7C7;
+	background: #E6E6E6;
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.info-something span {
+	display: block;
+	margin-bottom: 5px;
 }

@@ -1,9 +1,9 @@
 Aszist::Application.routes.draw do
 
-  get "amendments/new/:contract_id", to: "amendments#new", as: :new_amendment 
+  get "amendments/new/:contract_id", to: "amendments#other_new", as: :new_amendment 
   get "amendments/edit/:id/:contract_id", to: "amendments#edit", as: :other_edit_amendment
 
-  resources :amendments
+  resources :amendments, only: [:create, :update, :show]
 
   resources :services
 

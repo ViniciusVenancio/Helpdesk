@@ -38,7 +38,7 @@ class ContractsController < ApplicationController
 
   private
     def set_contract
-      @contract = Contract.friendly.find(params[:id])
+      @contract = Contract.find(params[:id])
     end
 
     def contract_params

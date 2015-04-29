@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427145359) do
+ActiveRecord::Schema.define(version: 20150429143811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,7 @@ ActiveRecord::Schema.define(version: 20150427145359) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
   end
-
-  add_index "amendments", ["slug"], name: "index_amendments_on_slug", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "ticket_id"
@@ -62,10 +59,7 @@ ActiveRecord::Schema.define(version: 20150427145359) do
     t.integer  "contract_type_id"
     t.float    "current_value"
     t.string   "status"
-    t.string   "slug"
   end
-
-  add_index "contracts", ["slug"], name: "index_contracts_on_slug", using: :btree
 
   create_table "enterprises", force: true do |t|
     t.string   "name"

@@ -1,39 +1,35 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Empresa:</strong>
-  <%= @contract.enterprise.corporate_name %>
-</p>
-
-<p>
-  <strong>Tipo:</strong>
-  <%= @contract.contract_type.name %>
-</p>
-
-<p>
-  <strong>Data de início:</strong>
-  <%= format_date(@contract.start_date) %>
-</p>
-
-<p>
-  <strong>Data de vencimento:</strong>
-  <%= format_date(@contract.due_date) %>
-</p>
-
-<p>
-  <strong>Valor mensal:</strong>
-  <%= @contract.monthly_payment %>
-</p>
-
-<p>
-  <strong>SLA:</strong>
-  <%= @contract.sla %>
-</p>
-
+<div class="info-something">
+  <span>
+    <strong>Empresa:</strong>
+    <%= @contract.enterprise.corporate_name %>
+  </span>
+  <span>
+    <strong>Tipo:</strong>
+    <%= @contract.contract_type.name %>
+  </span>
+  <span>
+    <strong>Data de início:</strong>
+    <%= format_date(@contract.start_date) %>
+  </span>
+  <span>
+    <strong>Data de vencimento:</strong>
+    <%= format_date(@contract.due_date) %>
+  </span>
+  <span>
+    <strong>Valor mensal:</strong>
+    <%= @contract.monthly_payment %>
+  </span>
+  <span>
+    <strong>SLA:</strong>
+    <%= @contract.sla %>
+  </span>
+</div>
 <% unless @contract.amendments.empty? %>
   <h2>Aditamentos</h2><hr>
   <ul>
     <% @contract.amendments.reverse.each do |amendment| %>
+      <li><%= "Título: #{amendment.title}" %></li>
       <li><%= "Número do aditamento: #{amendment.number}" %></li>
       <li><%= "Data de início: #{format_date(amendment.start_date)}" %></li>
       <li><%= "Data de vencimento: #{format_date(amendment.end_date)}" %></li>

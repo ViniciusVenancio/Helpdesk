@@ -16,7 +16,7 @@ class AmendmentsController < ApplicationController
     respond_with(@amendment)
   end
 
-  def new
+  def other_new
     @amendment = Amendment.new
     contract = Contract.find(params[:contract_id])
 
@@ -63,7 +63,7 @@ class AmendmentsController < ApplicationController
 
   private
     def set_amendment
-      @amendment = Amendment.friendly.find(params[:id])
+      @amendment = Amendment.find(params[:id])
     end
 
     def amendment_params
