@@ -75,19 +75,10 @@ class AmendmentsController < ApplicationController
     end
 
     def update_contract_current_value
-      #procuro o contrato daquele aditamento
       contract = Contract.find(params[:amendment][:contract_id])
-      
-      #atribuo o valor dele ao contador
       sum = contract.monthly_payment
-
-      #procuro todos os aditamentos desse contrato e retorno um array
       amendments = Amendment.where("contract_id = ?", contract.id)
-
-      #faço o cálculo dos aditamentos
       amendments.each { |amendment| sum += amendment.value }
-
-      #atualizo o valor atual do contrato
       contract.update_attribute('current_value', sum)
     end
 end

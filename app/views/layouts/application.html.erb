@@ -9,12 +9,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="row">
-    <%= render "shared/header" %>
-      <div class="large-12 columns">
-        <%= yield %>
+    <div class="wrapper">
+      <div class="full-menu"><%= render "shared/header" %></div>
+      <div class="row content">
+        <div class="large-12 columns ">
+          <%= yield %>
+        </div>
       </div>
+      <%= render "shared/footer" %>
     </div>
-    <%= render "shared/footer" %>
   </body>
 </html>

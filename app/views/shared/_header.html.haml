@@ -1,25 +1,26 @@
-%nav.top-bar{ "data-topbar" => true }
-  %ul.title-area
-    %li.toggle-topbar.menu-icon
-      = link_to "Menu", "#"
+%div.row
+  %nav.top-bar{ "data-topbar" => true }
+    %ul.title-area
+      %li.toggle-topbar.menu-icon
+        = link_to "Menu", "#"
 
-  %section.top-bar-section
-    - if user_signed_in?
-      %ul.left
-        %li
-          = link_to tickets_path do
-            Tickets
-            - if current_user.tickets_count > 0
-              %span.label.round= current_user.tickets_count
-        %li= link_to "Usuários", users_path if can?(:manage, User)
-        %li= link_to "Contratos", contracts_path if can?(:manage, Contract)
-        %li= link_to "Pacotes", contract_types_path if can?(:manage, ContractType)
-        %li= link_to "Serviços", services_path if can?(:manage, Service)
-        %li= link_to "Empresas", enterprises_path if can?(:read, Enterprise)
-        
+    %section.top-bar-section
+      - if user_signed_in?
+        %ul.left
+          %li
+            = link_to tickets_path do
+              Tickets
+              - if current_user.tickets_count > 0
+                %span.label.round= current_user.tickets_count
+          %li= link_to "Usuários", users_path if can?(:manage, User)
+          %li= link_to "Contratos", contracts_path if can?(:manage, Contract)
+          %li= link_to "Pacotes", contract_types_path if can?(:manage, ContractType)
+          %li= link_to "Serviços", services_path if can?(:manage, Service)
+          %li= link_to "Empresas", enterprises_path if can?(:read, Enterprise)
+          
 
-    %ul.right
-      = render 'devise/menu/login_items'
+      %ul.right
+        = render 'devise/menu/login_items'
 
 
 = flashy(flash)

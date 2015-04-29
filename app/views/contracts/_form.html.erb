@@ -7,7 +7,7 @@
     <%= f.label :contract_type_id, 'Pacote' %>
     <%= f.collection_select :contract_type_id, @types, :id, :name %>
     <%= f.label :status %>
-    <%= f.select :status, options_for_select(["Em andamento", "Encerrado"])%>
+    <%= f.select :status, options_for_select(["Ativo", "Encerrado"])%>
     <%= f.input :start_date, label: 'Data de início', order: [:day, :month, :year] %>
     <%= f.input :due_date, label: 'Data de vencimento', order: [:day, :month, :year] %>
     <%= f.input :monthly_payment, label: 'Mensalidade', placeholder: '###.##' %>
