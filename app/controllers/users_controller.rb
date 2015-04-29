@@ -6,6 +6,22 @@ class UsersController < ApplicationController
     @users = User.all.group_by{|u| u.role }
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    
+    if @user.save
+      respond_to do |format|
+        format.html { redirect_to users_path, notice: 'Usuário cadastrado com sucesso!' }
+      end
+    else
+      render :new
+    end
+  end
+
   def manage
     params[:users].each do |user|
       unless user[:role].to_s.empty?

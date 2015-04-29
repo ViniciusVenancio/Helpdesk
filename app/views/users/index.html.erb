@@ -1,5 +1,4 @@
 <h1>Usuários</h1>
-<%= link_to 'Novo usuário', new_user_path %>
 <%= form_tag '/users/manage' do %>
   <% User::ROLES.reverse.each do |role| %>
     <h4>
@@ -53,5 +52,6 @@
   <% end %>
   <p>
     <%= submit_tag "Atualizar", class: "button" %>
+    <%= link_to 'Novo usuário', new_user_path, class: 'button' %>
   </p>
 <% end %>

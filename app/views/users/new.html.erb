@@ -1,0 +1,15 @@
+<h2>Novo usuário</h2>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, placeholder: 'example.example@example.com', required: true, autofocus: true %>
+    <%= f.input :password, label: 'Senha', required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+    <%= f.input :password_confirmation, label: 'Confirme sua senha', required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Registrar" %>
+  </div>
+<% end %>

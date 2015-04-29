@@ -13,18 +13,16 @@ Aszist::Application.routes.draw do
 
   resources :enterprises
 
-  devise_for :users, controllers: {sessions: 'users/sessions'}
-
-  #devise_for :users
-
-  resources :tickets do
-    resources :comments
-  end
-
   resources :users, except: [ :show ] do
     collection do
       post 'manage'
     end
+  end
+
+  devise_for :users
+
+  resources :tickets do
+    resources :comments
   end
 
   get "/profile", to: "profiles#edit", as: :edit_profile
