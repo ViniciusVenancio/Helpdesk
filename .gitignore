@@ -28,3 +28,4 @@ pickle-email-*.html
 .ruby-version
 
 /config/database.yml
+.travis.yml
