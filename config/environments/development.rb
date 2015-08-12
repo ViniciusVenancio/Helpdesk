@@ -36,7 +36,7 @@ Aszist::Application.configure do
     authentication: :plain,
     domain: 'localhost',
     user_name: 'vinicius@formulaengenharia.com',
-    password: '97110874',
+    password: '',
     enable_starttls_auto: true
   }
 
